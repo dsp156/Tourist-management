@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title View more
+    link(rel="stylesheet" href="style.css")
+    style
+        include ../static/style (1).css
+  body
+    header
+      .wrapper
+        .logo
+          img(src="https://i.postimg.cc/mg4rWBmv/logo.png" alt="")
+        ul.nav-area
+          li
+            a(href="#") Home
+          li
+            a(href="#") About us
+          li
+            a(href="#") Feedback
+      .welcome-text
+        h1
+          | Source To 
+          span Destination
+        br
+        br
+        h2
+          a(href="#")=viewMore.starting_city
+          | ......
+          a(href="#")=viewMore.intermideat_city
+          | ......
+          a(href="#")=viewMore.destination_city
+      br
+      .pm
+        .package
+          br
+          h3=viewMore.name
+          h5=viewMore.description
+          h6
+            | Starting From 
+            h4=viewMore.price
+          br
+          li=viewMore.days +" Days"
+          li=viewMore.nights +" Nights"  
+          li Breakfast(per day)
+          li  lunch
+          li  Dinner
+          br
+          button.button(align="center")
+            a(href="bookNow") Book Now

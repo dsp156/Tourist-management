@@ -1,0 +1,100 @@
+.historical-places {
+    padding-top: 15px;
+    padding-bottom: 150px;
+}
+
+.historical-places .single-dest {
+    background: whitesmoke;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-bottom: 30px;
+}
+
+.historical-places .single-dest .thumb {
+    overflow: hidden;
+    position: relative;
+}
+
+.historical-places .single-dest .price {
+    color: white;
+    background-color: #02acf0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    border-radius: 18px;
+    transition: 0.3s;
+    font-size: 16px;
+    padding: 7px 18px 4px 18px;
+}
+
+.historical-places .single-dest .dest-info {
+    padding: 27px 20px 25px 20px;
+}
+
+.historical-places .single-dest .dest-info h3 {
+    color: #040e27;
+    font-weight: bold;
+    font-size: 22px;
+    transition: 0.3s;
+    margin-bottom: 0px;
+}
+
+.historical-places .single-dest .dest-info p {
+    margin-bottom: 7px;
+    margin-top: 2px;
+    font-weight: lighter;
+    font-size: 12px;
+    color: #000;
+}
+
+.historical-places .single-dest .dest-info .rating span i {
+    font-size: 12px;
+    color: #f88408;
+}
+
+.historical-places .single-dest .dest-info .rating span a {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #000;
+}
+
+.historical-places .single-dest .dest-info .rating .days {
+    font-weight: lighter;
+    color: #000;
+    font-size: 14px;
+}
+
+.historical-places .single-dest .dest-info .rating .days i {
+    margin-right: 8px;
+}
+
+.historical-places .single-dest .dest-info .rating .days a {
+    font-size: 14px;
+    color: #000;
+    margin-left: 5px;
+}
+
+.historical-places .single-dest:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.historical-places .single-dest:hover .dest-info h3 {
+    color: #030942;
+}
+
+.historical-places .single-dest:hover .thumb .price {
+    background-color: #0292f1;
+}
+
+.btn-hist a {
+    color: white;
+    background: #030942;
+    width: 100%;
+}
+
+.btn-hist:hover a {
+    color: whitesmoke;
+    background-color: red;
+}

@@ -1,0 +1,75 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    style
+        include ../static/style_show_all_trip.css
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    script(src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+    script(src="https://code.jquery.com/jquery-1.12.4.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    title Hello, world!
+  body
+    section.mt-2
+        .historical-places
+            .container
+                .row-justify-content-center
+                    .col-lg-12
+                        .section-title.mb-70
+                            h3.text-uppercase.text-center
+                                | Historical Places
+                            p.text-center
+                                | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem explicabo, rerum dignissimos voluptatibus maiores quae.
+            .row
+                each n in list
+                    if(n.image)
+                        .col-lg-4.col.md-6
+                            .single-dest
+                                .thumb
+                                    img.img-fluid(src="../static/upload/"+n.image alt="")
+                                    a.price(href="#")=n.price+"$"
+                                .dest-info
+                                    a(href="#")
+                                        h3=n.name
+                                    p=n.description
+                                    .rating.d-flex.justify-content-between
+                                        span.d-flex.align-items-center.justify-content-center
+                                            i.fas.fa-star
+                                            i.fas.fa-star
+                                            i.fas.fa-star
+                                            i.fas.fa-star
+                                            i.fas.fa-star
+                                            a(href="#") (10 Reviews)
+                                        .days
+                                            i.fas.fa-clock-o
+                                                p=n.days+" Days"
+                                                p=n.nights +" Nights"
+                                    form(action="/viewMore",method="post")
+                                        input(type="hidden",name="id",value=n._id)
+                                        button(class="btn")
+                                            | View More
+                                    
+                                //- form(action="/updateEdit",method="post")
+                                //-     input(type="hidden",name="id",value=n._id)
+                                //-     button(class="btn")
+                                //-         | Edit
+                                //- form(action="/deleteEdit",method="post")
+                                //-     input(type="hidden",name="id",value=n._id)
+                                //-     button(class="btn" onClick="return confirm('Are You sure want to delete');")
+                                //-         | Delete
+        //- h1=n.name
+        //- p=n.city
+        //- p=n.phone
+        //- if(n.image)
+        //-     img(src="../static/upload/"+n.image  alt=n.image)
+        //- form(action="/updateEdit",method="post")
+        //-   input(type="hidden",name="id",value=n._id)
+        //-   button(class="btn")
+        //-     | Edit
+        //- form(action="/deleteEdit",method="post")
+        //-   input(type="hidden",name="id",value=n._id)
+        //-   button(class="btn" onClick="return confirm('Are You sure want to delete');")
+        //-     | Delete
+        

@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    script(src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+    script(src="https://code.jquery.com/jquery-1.12.4.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    title Hello, world!
+  body
+    h2.text-center
+      | Here all Contact us data
+    table.table.table-striped
+      thead
+        tr
+          th(scope="col") Name
+          th(scope="col") Email
+          th(scope="col") Subject
+          th(scope="col") Update
+          th(scope="col") Delete
+      tbody
+        each n in list
+          tr
+            td=n.name
+            td=n.email
+            td=n.subject
+            td  
+              form(action="/updateEdit",method="post")
+                input(type="hidden",name="id",value=n._id)
+                button(class="btn")
+                  | Edit
+            td
+              form(action="/deleteEdit",method="post")
+                input(type="hidden",name="id",value=n._id)
+                button(class="btn" onClick="return confirm('Are You sure want to delete');")
+                  | Delete
+
+    //- .col-md-6.form-group
+    //-   input#searchName.form-control(type="text" name="designation" placeholder="Enter city")
+    //- each n in list
+    //-     h1=n.name
+    //-     p=n.email
+    //-     p=n.subject
+    //-     form(action="/updateEdit",method="post")
+    //-       input(type="hidden",name="id",value=n._id)
+    //-       button(class="btn")
+    //-         | Edit
+    //-     form(action="/deleteEdit",method="post")
+    //-       input(type="hidden",name="id",value=n._id)
+    //-       button(class="btn" onClick="return confirm('Are You sure want to delete');")
+    //-         | Delete
+        

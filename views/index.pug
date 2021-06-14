@@ -1,0 +1,655 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    style
+        include ../static/style.css
+    script(src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    title Intellegence Touriest Management
+  body
+    //- #loginModal.modal.fade(data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true")
+    //-   .modal-dialog
+    //-     .modal-content
+    //-       .modal-header
+    //-         h5#loginModalLabel.modal-title Login
+    //-         button.close(type="button" data-dismiss="modal" aria-label="Close")
+    //-           span(aria-hidden="true") ×
+    //-       .modal-body
+    //-         form
+    //-           .form-group
+    //-             label(for="exampleInputEmail1") Email address
+    //-             input#exampleInputEmail1.form-control(type="email" aria-describedby="emailHelp")
+    //-             small#emailHelp.form-text.text-muted
+    //-               | We'll never share your email with anyone
+    //-               | else.
+    //-           .form-group
+    //-             label(for="exampleInputPassword1") Password
+    //-             input#exampleInputPassword1.form-control(type="password")
+    //-           .form-group.form-check
+    //-             input#exampleCheck1.form-check-input(type="checkbox")
+    //-             label.form-check-label(for="exampleCheck1") Check me out
+    //-           button.btn(type="submit") Login
+    //- #signUpModal.modal.fade(data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true")
+    //-   .modal-dialog
+    //-     .modal-content
+    //-       .modal-header
+    //-         h5#signUpModalLabel.modal-title Get an ITM account
+    //-         button.close(type="button" data-dismiss="modal" aria-label="Close")
+    //-           span(aria-hidden="true") ×
+    //-       .modal-body
+    //-         form
+    //-           .form-group
+    //-             label(for="exampleInputEmail1") Email address
+    //-             input#exampleInputEmail1.form-control(type="email" aria-describedby="emailHelp")
+    //-             small#emailHelp.form-text.text-muted
+    //-               | We'll never share your email with anyone
+    //-               | else.
+    //-           .form-group
+    //-             label(for="exampleInputPassword1") Password
+    //-             input#exampleInputPassword1.form-control(type="password")
+    //-           .form-group.form-check
+    //-             input#exampleCheck1.form-check-input(type="checkbox")
+    //-             label.form-check-label(for="exampleCheck1") Check me out
+    //-           button.btn(type="submit") Sign Up
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href="#") Tour
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="#")
+              | Home 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href="adminLoginPage") Admin
+          li.float-right
+            a.nav-link(href="/") Login
+        ul.nav.navbar-nav.navbar-right 
+          li.my-2.my-lg-0
+            a.nav-link(href="/")=loginUser
+          li.nav-item
+            a.nav-link(href="logout") Logout
+    #carouselExampleControls.carousel.slide(data-ride="carousel")
+      .carousel-inner
+        .carousel-item.active
+          img.d-block.w-100(src="../static/img_bg_2.jpg" alt="...")
+          .carousel-caption
+            h5 Second slide label
+            p DISCOVER YOUR FAVORITE PLACES WITH US
+        .carousel-item
+          img.d-block.w-100(src="../static/img_bg_4.jpg" alt="...")
+          .carousel-caption.d-none.d-md-block
+            h5 Second slide label
+            p YOUR DREAM DESTINATION AT AN AFFORDABLE PRICE
+        .carousel-item
+          img.d-block.w-100(src="../static/img_bg_5.jpg" alt="...")
+          .carousel-caption.d-none.d-md-block
+            h5 Second slide label
+            p MANY HAPPY CUSTOMERS AND STILL COUNTING..
+      a.carousel-control-prev(href="#carouselExampleControls" role="button" data-slide="prev")
+        span.carousel-control-prev-icon(aria-hidden="true")
+        span.sr-only Previous
+      a.carousel-control-next(href="#carouselExampleControls" role="button" data-slide="next")
+        span.carousel-control-next-icon(aria-hidden="true")
+        span.sr-only Next
+    //- section.section-search
+    //-   .tabContainer
+    //-     .container
+    //-       .buttonContainer
+    //-         button(onclick="showPanel(0,'#ed8a19')") Flights
+    //-         button(onclick="showPanel(1,'#ed8a19')") Hotel
+    //-         button(onclick="showPanel(2,'#ed8a19')") Car Rent
+    //-         button(onclick="showPanel(3,'#ed8a19')") Cruises
+    //-     .tabPanel
+    //-       form.d-block.d-lg-flex
+    //-         .field.d-block.d-lg-flex
+    //-           .text-field-search.one-third
+    //-             label(for="") Where:
+    //-             input.form-control(type="text" placeholder="search place")
+    //-           .check-in.one-third
+    //-             label(for="") Check in:
+    //-             input.form-control(type="text" placeholder="check-in")
+    //-           .check-out.one-third
+    //-             label(for="") Check out:
+    //-             input.form-control(type="text" placeholder="check-out")
+    //-           .select-wrap.one-third
+    //-             label(for="")  Guest
+    //-             select.form-control(name="" id="")
+    //-               option(value="") Guest
+    //-               option(value="") 1
+    //-               option(value="") 2
+    //-               option(value="") 3
+    //-         .submit.field.d-block.d-lg-flex
+    //-           label(for="") submit
+    //-           button(type="submit") Submit
+    //-         //- <input type="submit" value="find Flights" class="search-submit btn btn-search">
+    //-     .tabPanel
+    //-       form.d-block.d-lg-flex
+    //-         .field.d-block.d-lg-flex
+    //-           .text-field-search.one-third
+    //-             input.form-control(type="text" placeholder="search Location")
+    //-           .check-in.one-third
+    //-             input.form-control(type="text" placeholder="check-in")
+    //-           .check-out.one-third
+    //-             input.form-control(type="text" placeholder="check-out")
+    //-           .select-wrap.one-third
+    //-             select.form-control(name="" id="")
+    //-               option(value="") Guest
+    //-               option(value="") 1
+    //-               option(value="") 2
+    //-               option(value="") 3
+    //-         input.search-submit.btn.btn-search(type="submit" value="find Flights")
+    //-     .tabPanel
+    //-       form.d-block.d-lg-flex
+    //-         .field.d-block.d-lg-flex
+    //-           .text-field-search.one-third
+    //-             input.form-control(type="text" placeholder="search Location")
+    //-           .check-in.one-third
+    //-             input.form-control(type="text" placeholder="check-in")
+    //-           .check-out.one-third
+    //-             input.form-control(type="text" placeholder="check-out")
+    //-           .select-wrap.one-third
+    //-             select.form-control(name="" id="")
+    //-               option(value="") Guest
+    //-               option(value="") 1
+    //-               option(value="") 2
+    //-               option(value="") 3
+    //-         input.search-submit.btn.btn-search(type="submit" value="find Flights")
+    //-     .tabPanel
+    //-       form.d-block.d-lg-flex
+    //-         .field.d-block.d-lg-flex
+    //-           .text-field-search.one-third
+    //-             input.form-control(type="text" placeholder="search Location")
+    //-           .check-in.one-third
+    //-             input.form-control(type="text" placeholder="check-in")
+    //-           .check-out.one-third
+    //-             input.form-control(type="text" placeholder="check-out")
+    //-           .select-wrap.one-third
+    //-             select.form-control(name="" id="")
+    //-               option(value="") Guest
+    //-               option(value="") 1
+    //-               option(value="") 2
+    //-               option(value="") 3
+    //-         input.search-submit.btn.btn-search(type="submit" value="find Flights")
+    section#services.services.section-bg
+      .container
+        .row
+          .col-lg-4
+            .section-title
+              h2 services we provide
+              p
+                |We have been delivering excellent service to our customers for over 50 years, and have a proven track record when it comes to travel, accommodation and tourist as well as visa related services. In addition to getting the basics right we strive to add value to your travel experience through our expertise, extended network and friendly staff.
+          .col-lg-8
+            .row
+              .col-md-6.d-flex.align-items-streach
+                .icon-circle.purple
+                  .icon
+                    i.fas.fa-drumstick-bite
+                  h4 Good Food
+                  p Enjoy delicious cuisines and lavish restaurants while you travel the world with us.
+              //- ************
+              .col-md-6.d-flex.align-items-streach.mt-4.mt-lg-0
+                .icon-circle.pink
+                  .icon
+                    i.fas.fa-umbrella-beach
+                  h4 Beach Resort
+                  p Enjoy swimming, recreational activities and stay at your favorite luxury resorts.
+              //- ************
+              .col-md-6.d-flex.align-items-streach.mt-4
+                .icon-circle.yellow
+                  .icon
+                    i.fas.fa-hiking
+                  h4 Mountain-Climbing
+                  p Enjoy trekking, climbing and exploring your favorite valleys as well as mountains.
+              //- ************
+              .col-md-6.d-flex.align-items-streach.mt-4
+                .icon-circle.blue
+                  .icon
+                    i.fas.fa-mountain
+                  h4 Hot Air Ballon
+                  p Hot air balloon services where you can capture stunning beautiful views of your imagination.
+              //- ************
+    section.team.section-bg.mt-5
+      .container
+        .section-title
+          h2.text-center Team
+          p.text-center Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, amet!
+        .row
+          .col-lg-3.col-md-6.d-flex.align-items-streach
+            .member
+              .member-img
+                img.img-fluid(src="../static/jaydeep.jpeg" alt="")
+                .social
+                  a(href="")
+                    i.fab.fa-facebook
+                  a(href="")
+                    i.fab.fa-twitter
+                  a(href="")
+                    i.fab.fa-instagram
+                  a(href="")
+                    i.fab.fa-linkedin
+              .member-info
+                h4 Jaydeep parmar
+                span Frontend Designer
+          //- **************
+          .col-lg-3.col-md-6.d-flex.align-items-streach
+            .member
+              .member-img
+                img.img-fluid(src="../static/devn.jpg" alt="")
+                .social
+                  a(href="")
+                    i.fab.fa-facebook
+                  a(href="")
+                    i.fab.fa-twitter
+                  a(href="")
+                    i.fab.fa-instagram
+                  a(href="")
+                    i.fab.fa-linkedin
+              .member-info
+                h4 Dev Patel
+                span Frontend Designer
+          //- **************
+          .col-lg-3.col-md-6.d-flex.align-items-streach
+            .member
+              .member-img
+                img.img-fluid(src="../static/kunaln.jpeg" alt="")
+                .social
+                  a(href="")
+                    i.fab.fa-facebook
+                  a(href="")
+                    i.fab.fa-twitter
+                  a(href="")
+                    i.fab.fa-instagram
+                  a(href="")
+                    i.fab.fa-linkedin
+              .member-info
+                h4 Kunal gadhavi
+                span Backend Developer
+          //- **************
+          .col-lg-3.col-md-6.d-flex.align-items-streach
+            .member
+              .member-img
+                img.img-fluid(src="../static/t1.jpeg" alt="")
+                .social
+                  a(href="")
+                    i.fab.fa-facebook
+                  a(href="")
+                    i.fab.fa-twitter
+                  a(href="")
+                    i.fab.fa-instagram
+                  a(href="")
+                    i.fab.fa-linkedin
+              .member-info
+                h4 Devanshu Patel
+                span Backend Developer
+          //- **************
+    section.mt-2
+      .historical-places
+        .container
+          .row-justify-content-center
+            .col-lg-12
+              .section-title.mb-70
+                h3.text-uppercase.text-center
+                  | PLACES TO VISIT
+                p.text-center
+                  | Places of significance where you can experience luxuries and enjoy your life to the fullest.
+          .row
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/cover-img-1.jpg" alt="")
+                  a.price(href="#") $300
+                .dest-info
+                  a(href="#")
+                    h3 Kerala
+                  p God's own country
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- *****************
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/cover-img-2.jpg" alt="")
+                  a.price(href="#") $300
+                .dest-info
+                  a(href="#")
+                    h3 Hyderabad
+                  p The pearl city
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- *****************
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/cover-img-3.jpg" alt="")
+                  a.price(href="#") $300
+                .dest-info
+                  a(href="#")
+                    h3 Jaipur
+                  p The pink city
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- //-*****************
+            //- .col-lg-4.col.md-6
+            //-   .single-dest
+            //-     .thumb
+            //-       img.img-fluid(src="../static/cover-img-4.jpg" alt="")
+            //-       a.price(href="#") $300
+            //-     .dest-info
+            //-       a(href="#")
+            //-         h3 Lorem
+            //-       p Lorem ipsum dolor sit amet.
+            //-       .rating.d-flex.justify-content-between
+            //-         span.d-flex.align-items-center.justify-content-center
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           a(href="#") (10 Reviews)
+            //-         .days
+            //-           i.fas.fa-clock-o
+            //-             a(href="") 2 days
+            //- //- *****************
+            //- .col-lg-4.col.md-6
+            //-   .single-dest
+            //-     .thumb
+            //-       img.img-fluid(src="../static/cover-img-5.jpg" alt="")
+            //-       a.price(href="#") $300
+            //-     .dest-info
+            //-       a(href="#")
+            //-         h3 Lorem
+            //-       p Lorem ipsum dolor sit amet.
+            //-       .rating.d-flex.justify-content-between
+            //-         span.d-flex.align-items-center.justify-content-center
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           a(href="#") (10 Reviews)
+            //-         .days
+            //-           i.fas.fa-clock-o
+            //-             a(href="") 2 days
+            //- //- *****************
+            //- .col-lg-4.col.md-6
+            //-   .single-dest
+            //-     .thumb
+            //-       img.img-fluid(src="../static/blog-1.jpg" alt="")
+            //-       a.price(href="#") $300
+            //-     .dest-info
+            //-       a(href="#")
+            //-         h3 Lorem
+            //-       p Lorem ipsum dolor sit amet.
+            //-       .rating.d-flex.justify-content-between
+            //-         span.d-flex.align-items-center.justify-content-center
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           i.fas.fa-star
+            //-           a(href="#") (10 Reviews)
+            //-         .days
+            //-           i.fas.fa-clock-o
+            //-             a(href="") 2 days
+            //- //- *****************
+          .row
+            .col-lg-12
+              .btn-hist.text-center
+                div
+                  a.btn.btn-about(href="/viewmore_historical_places") Book trip and view more historical Places
+    section.mt-2
+      .historical-places
+        .container
+          .row-justify-content-center
+            .col-lg-12
+              .section-title.mb-70
+                h3.text-uppercase.text-center
+                  | Best Hotels
+                p.text-center
+                  | Plan your stay at some of the best heritage hotels, zostels, toran hotels, apartments as well as amazing villas without compromising your budget.
+          .row
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/hotel-1.jpg" alt="")
+                  a.price(href="#")
+                    | $250/
+                    small night
+                .dest-info
+                  a(href="#")
+                    h3 THE OBEROI UDAIVILLAS HOTEL, RAJASTHAN
+                  p 5-star hotel. Historic area with boat rides on peaceful Lake Pichola, surrounded by City Palace & lakeside ghats.
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- *****************
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/hotel-2.jpg" alt="")
+                  a.price(href="#")
+                    | $300/
+                    small night
+                .dest-info
+                  a(href="#")
+                    h3 THE TAJ MAHAL PALACE, MUMBAI
+                  p The famous taj hotel which provides a beautiful view of the indian ocean and the infamous india gate at it’s entrance.
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- // *****************
+            .col-lg-4.col.md-6
+              .single-dest
+                .thumb
+                  img.img-fluid(src="../static/hotel-3.jpg" alt="")
+                  a.price(href="#")
+                    | $120/
+                    small night
+                .dest-info
+                  a(href="#")
+                    h3 THE LEELA PALACE, DELHI
+                  p Stay at this luxurious hotel and experience royal treatment in the heart of the country.
+                  .rating.d-flex.justify-content-between
+                    span.d-flex.align-items-center.justify-content-center
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      i.fas.fa-star
+                      a(href="#") (10 Reviews)
+                    .days
+                      i.fas.fa-clock-o
+                        a(href="") 2 days
+            //- // *****************
+          .row
+            .col-lg-12
+              .btn-hist.text-center
+                div
+                  a.btn.btn-about(href="#") More Hotels
+    section.testimonial-section.mt-5
+      .container
+        .row
+          .section-title.col-12.text-center
+            h2 CUSTOMER REVIEWS
+        .row
+          .col-lg-6
+            .testimonial-item
+              .test-date
+                | 09-08-2020
+              h4 Lorem ipsum dolor sit.
+              .rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+              p
+                | It was way better than I expected, the suite was very spacious and beautiful.People who helped me book the room were very patient, helpful and humble.Even at the checkout everyone treated us really well. I also loved the hospitality.
+              .customer
+                .customer-photo
+                  img(src="../static/room-6.jpg" alt="")
+                .test-text
+                  h6
+                    | Devanshu Patel 
+                    span India
+           
+          .col-lg-6
+            .testimonial-item
+              .test-date
+                | 09-08-2020
+              h4 Lorem ipsum dolor sit.
+              .rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+              p
+                | This site provides the best kind of services and money is also refunded immediately after cancellation in any case. This site is one stop source for all your travel related queries.
+              .customer
+                .customer-photo
+                  img(src="../static/t1.jpeg" alt="")
+                .test-text
+                  h6
+                    | Devanshu Patel 
+                    span India
+        //-   // ***************
+    hr
+    section.blog-section
+      .container
+        .row
+          .col-lg-12
+            .section-title
+              h2.text-center.pb-2
+                | Recent Blog
+        .row
+          .col-lg-4.col-md-6
+            .single-blog
+              img.img-fluid(src="../static/tour-3.jpg" alt="")
+              .blog-detail
+                .blog-date
+                  | August 09,2020
+                a.tag(href="#") #lorem
+              h4
+                a(href="#") YOUR ONE STOP SOURCE FOR ALL TRAVEL RELATED GUIDELINES
+          //- ******************
+          .col-lg-4.col-md-6
+            .single-blog
+              img.img-fluid(src="../static/tour-3.jpg" alt="")
+              .blog-detail
+                .blog-date
+                  | August 09,2020
+                a.tag(href="#") #lorem
+              h4
+                a(href="#") TRAVEL THE WORLD FROM YOUR COUCH 
+          //- ******************
+          .col-lg-4.col-md-6
+            .single-blog
+              img.img-fluid(src="../static/tour-3.jpg" alt="")
+              .blog-detail
+                .blog-date
+                  | August 09,2020
+                a.tag(href="#") #lorem
+              h4
+                a(href="#") PROTECT YOURSELF FROM COVID-19 WITH OUR TRAVEL INSURANCE
+          //- ******************
+    section.contact.mt-3
+      .container
+        .section-title
+          h2.text-center
+            | Contact Us
+          p.text-center
+            | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem nulla officia obcaecati aut reiciendis officiis accusamus omnis debitis aliquid laudantium?
+        .row
+          .col-lg-6
+            .row
+              .col-md-12
+                .icon-box
+                  i.fas.fa-share
+                  h3 Social Profile
+                  .social-links
+                    a.twitter(href="#")
+                      i.fab.fa-twitter
+                    a.facebook(href="#")
+                      i.fab.fa-facebook
+                    a.instagram(href="#")
+                      i.fab.fa-instagram
+                    a.linkedin(href="#")
+                      i.fab.fa-linkedin
+              .col-md-6
+                .icon-box.mt-4
+                  i.fas.fa-envelope
+                  h3 Email us
+                  p devanshupatel156@gmail.com
+              .col-md-6
+                .icon-box.mt-4
+                  i.fas.fa-phone
+                  h3 24/7 Support
+                  p +91 7874104185
+          .col-lg-6
+            form(action="/contact", method="post")
+              .form-row
+                .col-md-6.form-group
+                  input#name.form-control(type="text" name="name" placeholder="Enter Name")
+                .col-md-6.form-group
+                  input#email.form-control(type="email" name="email" placeholder="Enter Email")
+              .form-group
+                input#subject.form-control(type="text" name="subject" placeholder="subject")
+              .form-group
+                textarea#message.form-control(name="message" placeholder="Message" rows="6")
+              .form-group
+                button(class="btn")
+                  | Submit
+    //- Optional JavaScript
+    //- jQuery first, then Popper.js, then Bootstrap JS
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
+    script(src="index.js")
